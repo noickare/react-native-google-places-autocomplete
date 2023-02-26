@@ -831,6 +831,9 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
               props.styles.textInput,
             ]}
             value={stateText}
+            outlineStyle={{
+              borderWidth: 0,
+            }}
             placeholder={props.placeholder}
             onFocus={
               onFocus
