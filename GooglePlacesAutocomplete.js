@@ -1,10 +1,8 @@
 import { ActivityIndicator, Text, TextInput } from 'react-native-paper';
 import {
-  FlatList,
   Image,
   Keyboard,
   Platform,
-  ScrollView,
   StyleSheet,
   TouchableHighlight,
   View,
@@ -18,6 +16,7 @@ import React, {
   useState,
 } from 'react';
 
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import PropTypes from 'prop-types';
 import Qs from 'qs';
 /* eslint-disable react-native/no-inline-styles */
@@ -614,7 +613,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
 
   const _renderRow = (rowData = {}, index) => {
     return (
-      <ScrollView
+      <KeyboardAwareScrollView
         contentContainerStyle={
           props.isRowScrollable ? { minWidth: '100%' } : { width: '100%' }
         }
@@ -642,7 +641,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
             {_renderRowData(rowData, index)}
           </View>
         </TouchableHighlight>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   };
 
@@ -756,7 +755,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
       listViewDisplayed === true
     ) {
       return (
-        <ScrollView
+        <KeyboardAwareScrollView
           style={[
             props.suppressDefaultStyles ? {} : defaultStyles.listView,
             props.styles.listView,
@@ -771,7 +770,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
           ) : (
             stateText.length > props.minLength && props.listEmptyComponent
           )}
-        </ScrollView>
+        </KeyboardAwareScrollView>
         // <FlatList
         //   nativeID='result-list-id'
         //   scrollEnabled={!props.disableScroll}
